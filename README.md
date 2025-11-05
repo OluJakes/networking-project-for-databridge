@@ -53,3 +53,33 @@ interface GigabitEthernet0/2
 exit
 end
 write memory
+
+🧾 Key Outcomes
+
+✅ Admin and Sales successfully access the HTTP web server.
+
+❌ HR access to the server is denied.
+
+🔒 ACL verification confirms correct permit/deny rules via show access-lists HTTP-SERVER-ACCESS.
+
+🧠 Explanation
+
+The ACL filters traffic based on IP and protocol to enforce access control. By denying HR while allowing Admin and Sales, the configuration strengthens data confidentiality and prevents unauthorized access within the network.
+
+🏁 Conclusion
+
+This project illustrates how Cisco ACLs can be implemented to control departmental communication, ensuring that access policies are enforced at the router level. It reinforces the importance of ACLs in network segmentation, security, and policy compliance.
+
+🔗 Project Files
+
+📄 Download Project PDF
+
+💾 Open in Cisco Packet Tracer
+ (Upload .pkt file and add link once hosted)
+
+👤 Author
+
+Olumide Solanke
+📧 lummiee@gmail.com
+
+🔗 LinkedIn Profile
