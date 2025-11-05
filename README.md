@@ -1,28 +1,40 @@
 # 🖧 Computer Networking – Access Control List (ACL) Implementation in Cisco Packet Tracer
 
 ## 📘 Project Overview
-This project demonstrates how **Access Control Lists (ACLs)** can be used on Cisco routers to regulate inter-departmental access in a network. The goal is to **permit Admin and Sales** departments to reach the company web server, while **restricting HR** access. This showcases how ACLs enhance **network security**, **access control**, and **traffic management**.
+This project demonstrates the configuration of **Access Control Lists (ACLs)** on a Cisco router to manage inter-departmental network communication. The setup ensures that **Admin** and **Sales** departments can access a company web server, while the **HR** department is denied access — showcasing practical implementation of security policies in enterprise networking.
+---
+
+## 🔗 View Project 👉 [View Full Documentation (PDF)](https://drive.google.com/file/d/10NLI6gIRDUCjiJOM4z5BdKHEr8Q2gYlR/view?usp=sharing)
+---
+
+## 🎯 Project Objectives
+- To understand how **ACLs** are used to filter network traffic based on IP addresses and protocols.  
+- To configure a **Cisco router** for departmental access segmentation.  
+- To implement **security controls** that prevent unauthorized access to critical resources.  
+- To test, verify, and document the impact of ACL configurations on inter-network communication.
 
 ---
 
 ## 🧩 Network Design
 - **Router:** Cisco 2911  
 - **Switches:** Cisco 2960 (Admin, Sales, HR)  
-- **Server:** Web Server at `192.168.10.5`  
-- **Subnets:**
-  - Admin: `192.168.10.0/24` → Gateway: `192.168.10.1`
-  - Sales: `192.168.20.0/24` → Gateway: `192.168.20.1`
-  - HR: `192.168.30.0/24` → Gateway: `192.168.30.1`
+- **Server:** Web Server – IP `192.168.10.5` (Admin Department)  
+- **Subnet Details:**
+  - Admin → `192.168.10.0/24` (Gateway: `192.168.10.1`)
+  - Sales → `192.168.20.0/24` (Gateway: `192.168.20.1`)
+  - HR → `192.168.30.0/24` (Gateway: `192.168.30.1`)
 
-Each subnet connects to the router via a dedicated interface. ACLs are applied inbound on Sales and HR interfaces to enforce access restrictions.
+**Design Summary:**  
+Each department is assigned a unique subnet, connected via dedicated switches to the main router. ACLs are applied on inbound interfaces to enforce role-based access control and protect critical services.
 
 ---
 
 ## ⚙️ Configuration Summary
 ```bash
-! Router Configuration
 enable
 configure terminal
+
+! Configure Interfaces
 interface GigabitEthernet0/0
  ip address 192.168.10.1 255.255.255.0
  no shutdown
@@ -36,7 +48,7 @@ interface GigabitEthernet0/2
  no shutdown
 exit
 
-! ACL Configuration
+! Access Control List
 ip access-list extended HTTP-SERVER-ACCESS
  permit ip 192.168.10.0 0.0.0.255 host 192.168.10.5
  permit ip 192.168.20.0 0.0.0.255 host 192.168.10.5
@@ -44,42 +56,15 @@ ip access-list extended HTTP-SERVER-ACCESS
  permit ip any any
 exit
 
-! Apply ACLs
+! Apply ACL to Interfaces
 interface GigabitEthernet0/1
  ip access-group HTTP-SERVER-ACCESS in
 exit
 interface GigabitEthernet0/2
  ip access-group HTTP-SERVER-ACCESS in
 exit
+
 end
 write memory
 
-🧾 Key Outcomes
 
-✅ Admin and Sales successfully access the HTTP web server.
-
-❌ HR access to the server is denied.
-
-🔒 ACL verification confirms correct permit/deny rules via show access-lists HTTP-SERVER-ACCESS.
-
-🧠 Explanation
-
-The ACL filters traffic based on IP and protocol to enforce access control. By denying HR while allowing Admin and Sales, the configuration strengthens data confidentiality and prevents unauthorized access within the network.
-
-🏁 Conclusion
-
-This project illustrates how Cisco ACLs can be implemented to control departmental communication, ensuring that access policies are enforced at the router level. It reinforces the importance of ACLs in network segmentation, security, and policy compliance.
-
-🔗 Project Files
-
-📄 Download Project PDF
-
-💾 Open in Cisco Packet Tracer
- (Upload .pkt file and add link once hosted)
-
-👤 Author
-
-Olumide Solanke
-📧 lummiee@gmail.com
-
-🔗 LinkedIn Profile
