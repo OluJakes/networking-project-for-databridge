@@ -121,7 +121,3 @@ cisco packet-tracer networking network-security acl access-control-list router-s
 **Olumide Solanke**
 📧 [olumide@greyfusion.com.ng](mailto:olumide@greyfusion.com.ng)
 🌐 [LinkedIn](https://www.linkedin.com/in/olumidesolanke)
-
-```
-
-
