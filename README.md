@@ -66,5 +66,62 @@ exit
 
 end
 write memory
+````
+
+---
+
+## 📷 Verification & Results
+
+* ✅ **Admin:** Successfully accessed the HTTP web server (`192.168.10.5`).
+* ✅ **Sales:** Successfully accessed the same server.
+* ❌ **HR:** Denied access to the web server (both HTTP and ICMP).
+* 🧾 **Router ACL Output:**
+
+  ```bash
+  Router# show access-lists HTTP-SERVER-ACCESS
+  10 permit ip 192.168.10.0 0.0.0.255 host 192.168.10.5
+  20 permit ip 192.168.20.0 0.0.0.255 host 192.168.10.5
+  30 deny ip 192.168.30.0 0.0.0.255 host 192.168.10.5
+  40 permit ip any any
+  ```
+
+---
+
+## 🧠 Explanation
+
+The **ACL configuration** demonstrates how traffic can be selectively controlled in an enterprise network.
+By filtering based on source IP, the router enforces departmental restrictions — ensuring only **authorized subnets** can reach critical resources. This strengthens **confidentiality**, **network integrity**, and **policy enforcement** at Layer 3.
+
+---
+
+## 🏁 Conclusion
+
+The project successfully shows how **Access Control Lists (ACLs)** enhance internal network security by regulating communication between departments. Through precise router-based filtering, organizations can reduce insider threats, control access privileges, and maintain a secure, efficient network.
+
+---
+
+## 📂 Project Files
+
+📄 [Download Project Report (PDF)](https://drive.google.com/file/d/10NLI6gIRDUCjiJOM4z5BdKHEr8Q2gYlR/view?usp=sharing)
+💾 [Open Cisco Packet Tracer File (.pkt)](https://drive.google.com/file/d/17LbV1u4ZggHP_nByfprSS57J30XKYZbg/view?usp=sharing)
+📜 [View on LinkedIn](https://www.linkedin.com/in/olumidesolanke)
+
+---
+
+## 🏷️ GitHub Topics
+
+```
+cisco packet-tracer networking network-security acl access-control-list router-switch configuration subnetting tcp-ip cybersecurity routing-and-switching network-engineering network-administration it-infrastructure firewall information-technology network-management
+```
+
+---
+
+## 👤 Author
+
+**Olumide Solanke**
+📧 [olumide@greyfusion.com.ng](mailto:olumide@greyfusion.com.ng)
+🌐 [LinkedIn](https://www.linkedin.com/in/olumidesolanke)
+
+```
 
 
